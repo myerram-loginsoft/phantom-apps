@@ -1,0 +1,3700 @@
+{
+    "appid": "c2b555bf-4a44-4906-b3c5-bc36acd70f40",
+    "name": "Hyas Insight",
+    "description": "This app implements investigative actions that return Hyas Insight Records for the object queried.",
+    "type": "reputation",
+    "product_vendor": "Hyas",
+    "logo": "hyasinsight.png",
+    "logo_dark": "hyasinsight_dark.png",
+    "product_name": "Hyas Insight",
+    "python_version": "3",
+    "product_version_regex": ".*",
+    "publisher": "Hyas",
+    "license": "Copyright (c) Hyas, 2022",
+    "app_version": "26.0.0",
+    "utctime_updated": "2022-05-27T11:57:26.055253Z",
+    "package_name": "phantom_hyasinsight",
+    "main_module": "hyasinsight_connector.py",
+    "min_phantom_version": "5.2.1.78411",
+    "app_wizard_version": "1.0.0",
+    "configuration": {
+        "apikey": {
+            "description": "API KEY",
+            "data_type": "password",
+            "required": true,
+            "order": 0,
+            "name": "apikey",
+            "id": 0
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "verbose": "",
+            "type": "test",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup c2 domain",
+            "identifier": "lookup_c2_domain",
+            "description": "Performs C2 Domain Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "domain": {
+                    "description": "domain to lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "domain"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "domain",
+                    "id": 1,
+                    "param_name": "domain"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "www.hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.actor_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "197.210.84.34"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "himionsa.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "80.78.22.32"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_url",
+                    "data_type": "string",
+                    "contains": [
+                        "url"
+                    ],
+                    "example_values": [
+                        "http://www.glowtey.com/mtc/config.php?action=recoveries"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2020/09/15 08:12:44"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "ip@allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "webmail.allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "46.173.218.219"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_url",
+                    "data_type": "string",
+                    "contains": [
+                        "url"
+                    ],
+                    "example_values": [
+                        "http://webmail.allbayrak.com/roundcube/?_task=mail&amp;_caps=pdf%3D1%2Cflash%3D0%2Ctiff%3D0%2Cwebp%3D1&amp;_uid=8&amp;_mbox=INBOX&amp;_framed=1&amp;_action=preview"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.sha256",
+                    "data_type": "string",
+                    "contains": [
+                        "sha256"
+                    ],
+                    "example_values": [
+                        "281af32d4b70417c5027c9590f494aa9026c540a5c8af407dc3d464afe0a23ae"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "column_name": "domain",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "Domain Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup c2 email",
+            "identifier": "lookup__c2__email",
+            "description": "Performs Email C2 Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "email": {
+                    "description": "email to lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "email"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "email",
+                    "id": 1,
+                    "param_name": "email"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.email",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "www.hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.actor_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "197.210.84.34"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "himionsa.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "80.78.22.32"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_url",
+                    "data_type": "string",
+                    "contains": [
+                        "url"
+                    ],
+                    "example_values": [
+                        "http://www.glowtey.com/mtc/config.php?action=recoveries"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2020/09/15 08:12:44"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "ip@allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "webmail.allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "46.173.218.219"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_url",
+                    "data_type": "string",
+                    "contains": [
+                        "url"
+                    ],
+                    "example_values": [
+                        "http://webmail.allbayrak.com/roundcube/?_task=mail&amp;_caps=pdf%3D1%2Cflash%3D0%2Ctiff%3D0%2Cwebp%3D1&amp;_uid=8&amp;_mbox=INBOX&amp;_framed=1&amp;_action=preview"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.sha256",
+                    "data_type": "string",
+                    "contains": [
+                        "sha256"
+                    ],
+                    "example_values": [
+                        "281af32d4b70417c5027c9590f494aa9026c540a5c8af407dc3d464afe0a23ae"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "column_name": "email",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "Email Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup c2 ip",
+            "identifier": "lookup_c2_ip",
+            "description": "Performs IP C2 Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "ip": {
+                    "description": "IP to lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "ip",
+                        "ipv6"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "ip",
+                    "id": 1,
+                    "param_name": "ip"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "www.hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.actor_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "197.210.84.34"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "himionsa.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "80.78.22.32"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_url",
+                    "data_type": "string",
+                    "contains": [
+                        "url"
+                    ],
+                    "example_values": [
+                        "http://www.glowtey.com/mtc/config.php?action=recoveries"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2020/09/15 08:12:44"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "ip@allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "webmail.allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "46.173.218.219"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_url",
+                    "data_type": "string",
+                    "contains": [
+                        "url"
+                    ],
+                    "example_values": [
+                        "http://webmail.allbayrak.com/roundcube/?_task=mail&amp;_caps=pdf%3D1%2Cflash%3D0%2Ctiff%3D0%2Cwebp%3D1&amp;_uid=8&amp;_mbox=INBOX&amp;_framed=1&amp;_action=preview"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.sha256",
+                    "data_type": "string",
+                    "contains": [
+                        "sha256"
+                    ],
+                    "example_values": [
+                        "281af32d4b70417c5027c9590f494aa9026c540a5c8af407dc3d464afe0a23ae"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip",
+                        "ipv6"
+                    ],
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "IP Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup c2 sha256",
+            "identifier": "lookup_c2_sha256",
+            "description": "Performs SHA256 C2 Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "sha256": {
+                    "description": "sha256 to lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "sha256"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "sha256",
+                    "id": 1,
+                    "param_name": "sha256"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.sha256",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "www.hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.actor_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "197.210.84.34"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "himionsa.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "80.78.22.32"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.c2_url",
+                    "data_type": "string",
+                    "contains": [
+                        "url"
+                    ],
+                    "example_values": [
+                        "http://www.glowtey.com/mtc/config.php?action=recoveries"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2020/09/15 08:12:44"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "ip@allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "webmail.allbayrak.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "46.173.218.219"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.referrer_url",
+                    "data_type": "string",
+                    "contains": [
+                        "url"
+                    ],
+                    "example_values": [
+                        "http://webmail.allbayrak.com/roundcube/?_task=mail&amp;_caps=pdf%3D1%2Cflash%3D0%2Ctiff%3D0%2Cwebp%3D1&amp;_uid=8&amp;_mbox=INBOX&amp;_framed=1&amp;_action=preview"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.sha256",
+                    "data_type": "string",
+                    "contains": [
+                        "sha256"
+                    ],
+                    "example_values": [
+                        "281af32d4b70417c5027c9590f494aa9026c540a5c8af407dc3d464afe0a23ae"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.sha256",
+                    "data_type": "string",
+                    "contains": [
+                        "sha256"
+                    ],
+                    "column_name": "sha256",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "SHA256 Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup whois domain",
+            "identifier": "lookup_whois_domain",
+            "description": "Performs Domain WHOIS Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "domain": {
+                    "description": "Domain to lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "domain"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "domain",
+                    "id": 1,
+                    "param_name": "domain"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.param.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "www.hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2016-12-07T06:05:05.230927Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_abuse_email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "abuse@godaddy.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.city",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "scottsdale"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.country",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "US"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.address",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "domainsbyproxy.com|14455 n. hayden road"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_2tld",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_created_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2001-05-02T00:00:00"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_expires_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2026-05-02T00:00:00 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_updated_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2017-06-28T04:45:22 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "hyas.com@domainsbyproxy.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.idn_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "None"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "hyas"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.nameserver",
+                    "data_type": "string",
+                    "contains": [
+                        "nameserver"
+                    ],
+                    "example_values": [
+                        "['ns10.domaincontrol.com', 'ns09.domaincontrol.com']"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.organization",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "hyas"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "+14806242599 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone_info_carrier",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        " "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone_info_country",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "United States"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone_info_geo",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Arizona"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.state",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.privacy_punch",
+                    "data_type": "boolean",
+                    "contains": [],
+                    "example_values": [
+                        "False"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.registrar",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "godaddy.com, llc"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "column_name": "domain",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "Domain Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup device geo ipv4",
+            "identifier": "lookup_device_geo_ipv4",
+            "description": "Performs IP Device Geo Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "ipv4": {
+                    "description": "IPV4 to Lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "ip"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "ipv4",
+                    "id": 1,
+                    "param_name": "ipv4"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.param.ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": []
+                },
+                {
+                    "data_path": "action_result.*.datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2020-07-09T09:53:35Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.device_geo_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.device_user_agent",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Mozilla/5.0 (Linux; Android 8.1.0; SM-P585Y Build/M1AJQ; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/83.0.4103.106 Safari/537.36"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_country_alpha_2",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "AU"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_horizontal_accuracy",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "27"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "1.157.132.70"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ipv6",
+                    "data_type": "string",
+                    "contains": [
+                        "ip",
+                        "ipv6"
+                    ],
+                    "example_values": [
+                        "fe80::be54:51ff:feeb:bf98"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.latitude",
+                    "data_type": "numeric",
+                    "contains": [],
+                    "example_values": [
+                        "-33.732083"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.longitude",
+                    "data_type": "numeric",
+                    "contains": [],
+                    "example_values": [
+                        "151.156693"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.wifi_bssid",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "bc:30:d9:cd:3b:fe"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "column_name": "ipv4",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "IP Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup whois email",
+            "identifier": "lookup_whois_email",
+            "description": "Performs Email WHOIS Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "email": {
+                    "description": "email to lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "email"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "email",
+                    "id": 1,
+                    "param_name": "email"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.param.email",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "www.hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.Address",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": []
+                },
+                {
+                    "data_path": "action_result.*.datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2016-12-07T06:05:05.230927Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_abuse_email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "abuse@godaddy.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.city",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "scottsdale"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.country",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "US"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.address",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "domainsbyproxy.com|14455 n. hayden road"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_2tld",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_created_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2001-05-02T00:00:00"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_expires_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2026-05-02T00:00:00 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_updated_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2017-06-28T04:45:22 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "hyas.com@domainsbyproxy.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.idn_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "None"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "hyas"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.nameserver",
+                    "data_type": "string",
+                    "contains": [
+                        "nameserver"
+                    ],
+                    "example_values": [
+                        "['ns10.domaincontrol.com', 'ns09.domaincontrol.com']"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.organization",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "hyas"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "+14806242599 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone_info_carrier",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        " "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone_info_country",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "United States"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone_info_geo",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Arizona"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.state",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.privacy_punch",
+                    "data_type": "boolean",
+                    "contains": [],
+                    "example_values": [
+                        "False"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.registrar",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "godaddy.com, llc"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "column_name": "email",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "Email Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup whois phone",
+            "identifier": "lookup_whois_phone",
+            "description": "Performs Phone WHOIS Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "phone": {
+                    "description": "Phone to Lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "phone"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "phone",
+                    "id": 1,
+                    "param_name": "phone"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.param.phone",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "www.hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2016-12-07T06:05:05.230927Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_abuse_email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "abuse@godaddy.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.city",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "scottsdale"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.country",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "US"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.address",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "domainsbyproxy.com|14455 n. hayden road"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_2tld",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_created_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2001-05-02T00:00:00"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_expires_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2026-05-02T00:00:00 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_updated_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2017-06-28T04:45:22 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "hyas.com@domainsbyproxy.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.idn_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "None"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "hyas"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.nameserver",
+                    "data_type": "string",
+                    "contains": [
+                        "nameserver"
+                    ],
+                    "example_values": [
+                        "['ns10.domaincontrol.com', 'ns09.domaincontrol.com']"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.organization",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "hyas"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "+14806242599 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone_info_carrier",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        " "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone_info_country",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "United States"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone_phone_info_geo",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Arizona"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.state",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.privacy_punch",
+                    "data_type": "boolean",
+                    "contains": [],
+                    "example_values": [
+                        "False"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.registrar",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "godaddy.com, llc"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.phone",
+                    "data_type": "string",
+                    "contains": [
+                        "phone"
+                    ],
+                    "column_name": "phone",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "Phone Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup dynamicdns email",
+            "identifier": "lookup_dynamicdns_email",
+            "description": "Performs Email DynamicDNS Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "email": {
+                    "description": "Email to Lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "email"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "email",
+                    "id": 1,
+                    "param_name": "email"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": []
+                },
+                {
+                    "data_path": "action_result.*.a_record",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "4.4.4.4"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.account",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "free"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.created",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2022-03-14T11:05:14Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.created_ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "1.121.160.76"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "block-make.duckdns.org"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_creator_ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "101.185.25.219 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "DarkMagicSource@github"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "column_name": "email",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "Email Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup dynamicdns ip",
+            "identifier": "lookup_dynamicdns_ip",
+            "description": "Performs IP DynamicDNS Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "ip": {
+                    "description": "ip to lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "ip"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "ip",
+                    "id": 1,
+                    "param_name": "ip"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": []
+                },
+                {
+                    "data_path": "action_result.*.a_record",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "4.4.4.4"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.account",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "free"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.created",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2022-03-14T11:05:14Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.created_ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "1.121.160.76"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "block-make.duckdns.org"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_creator_ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "101.185.25.219 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "DarkMagicSource@github"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "IP Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup sinkhole ip",
+            "identifier": "lookup_sinkhole_ip",
+            "description": "Performs IP Sinkhole Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "ip": {
+                    "description": "ip to lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "ip"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "ip",
+                    "id": 1,
+                    "param_name": "ip"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "4.4.4.4"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.count",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "4.4.4.4"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.country_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Netherlands"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.data_port",
+                    "data_type": "numeric",
+                    "contains": [],
+                    "example_values": [
+                        "5552"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.datetime",
+                    "data_type": "numeric",
+                    "contains": [],
+                    "example_values": [
+                        "2020-06-25T00:08:32Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "88.218.16.156"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.last_seen",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2020-06-25T00:08:32Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.organization_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Shahkar Towse'e Tejarat Mana PJSC"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.sink_source",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "192.169.69.25"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "IP Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup passivehash ip",
+            "identifier": "lookup_passivehash_ip",
+            "description": "Performs IP PassiveHash Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "ip": {
+                    "description": "ip to lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "ip"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "ip",
+                    "id": 1,
+                    "param_name": "ip"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "192.169.69.25"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "wuxinewway.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.md5_count",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "8"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "IP Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup passivehash domain",
+            "identifier": "lookup_passivehash_domain",
+            "description": "Performs Domain PassiveHash Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "domain": {
+                    "description": "domain to lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "domain"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "domain",
+                    "id": 1,
+                    "param_name": "domain"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "192.169.69.25"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "wuxinewway.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.md5_count",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "8"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "column_name": "domain",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "Domain Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup passivedns ip",
+            "identifier": "lookup_passivedns_ip",
+            "description": "Performs IP PassiveDNS Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "ip": {
+                    "description": "IP to Lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "ip"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "ip",
+                    "id": 1,
+                    "param_name": "ip"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "192.169.69.25"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.count",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "189-70-45-212.user.veloxzone.com.br"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.first_seen",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2014-07-30T00:00:00Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_city_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Jaboatão dos Guararapes"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_country_iso_code",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "BR"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_country_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Brazil"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_location_latitude",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "-8.1128"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_location_longitude",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "-35.0147"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_postal_code",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "54000-000"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "189.70.45.212"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_isp_autonomous_system_number",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "AS7738"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_isp_autonomous_system_organization",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Telemar Norte Leste S.A."
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_isp_ip_address",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "189.70.45.212"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_isp_isp",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Telemar Norte Leste S.A."
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_isp_organization",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Telemar Norte Leste S.A."
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "189.70.45.212"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.last_seen",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2019-08-03T00:00:00Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.sources",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "zetalytics"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "IP Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup passivedns domain",
+            "identifier": "lookup_passivedns_domain",
+            "description": "Performs Domain PassiveDNS Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "domain": {
+                    "description": "Domain to Lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "domain"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "domain",
+                    "id": 1,
+                    "param_name": "domain"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.count",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "189-70-45-212.user.veloxzone.com.br"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.first_seen",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2014-07-30T00:00:00Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_city_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Jaboatão dos Guararapes"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_country_iso_code",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "BR"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_country_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Brazil"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_location_latitude",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "-8.1128"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_location_longitude",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "-35.0147"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_geo_postal_code",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "54000-000"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "189.70.45.212"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_isp_autonomous_system_number",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "AS7738"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_isp_autonomous_system_organization",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Telemar Norte Leste S.A."
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_isp_ip_address",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "189.70.45.212"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_isp_isp",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Telemar Norte Leste S.A."
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip_isp_organization",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Telemar Norte Leste S.A."
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "189.70.45.212"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.last_seen",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2019-08-03T00:00:00Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.sources",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "zetalytics"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "column_name": "domain",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "Domain Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup ssl certificate ip",
+            "identifier": "lookup_ssl_certificate_ip",
+            "description": "Performs IP SSLCertificate Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "ip": {
+                    "description": "IP to Lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "ip"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "ip",
+                    "id": 1,
+                    "param_name": "ip"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "104.24.110.27"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_geo_city_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "San Francisco"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_geo_country_iso_code",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "US"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_geo_country_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "United States"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_geo_location_latitude",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "37.7621 "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_geo_location_longitude",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "-122.3971"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_geo_postal_code",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "94107"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_isp_autonomous_system_number",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "AS13335"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_isp_isp",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Cloudflare, Inc."
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_isp_organization",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Cloudflare, Inc."
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "104.24.110.27"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_cert_key",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "261757a2d2d31aa6dcabc27bb8b2395a207c6f52"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_expire_date",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2020-09-25T12:00:00Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_issue_date",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2019-09-26T00:00:00Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_issuer_commonName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "CloudFlare Inc ECC CA-2"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_issuer_countryName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "US"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_issuer_localityName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "San Francisco"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_issuer_organizationName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "CloudFlare, Inc."
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_issuer_organizationalUnitName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_issuer_stateOrProvinceName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "CA"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_md5",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "89c377cd36286e287b118a8013ba2296"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_serial_number",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "11233593787305851059064306644706338579"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_sha1",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "261757a2d2d31aa6dcabc27bb8b2395a207c6f52"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_sha_256",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "7118e559e93b9cf442f1c93fc9ed908f904c60d74fae82107b276b137cea5357"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_sig_algo",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "ecdsa-with-sha256"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_ssl_version",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_subject_commonName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "sni.cloudflaressl.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_subject_countryName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "US"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_subject_localityName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "San Francisco"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_subject_organizationName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Cloudflare, Inc."
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_subject_organizationalUnitName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_subject_stateOrProvinceName",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "CA"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ssl_cert_timestamp",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Thu, 26 Sep 2019 23:20:31 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "IP Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup current whois domain",
+            "identifier": "lookup_current_whois_domain",
+            "description": "Performs Domain Current Whois Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "domain": {
+                    "description": "Domain to lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "domain"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "domain",
+                    "id": 1,
+                    "param_name": "domain"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2022-03-14T11:05:14Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.abuse_emails",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "abuse@godaddy.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.address",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Domainsbyproxy.com\n2155 E Warner Rd"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.city",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Temple"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.country",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "United States"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_2tld",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "example_values": [
+                        "hyas.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_created_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2001-05-01T23:42:14"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_expires_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2026-05-01T23:42:14"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.domain_updated_datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2020-06-30T17:43:35"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.email",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "example_values": [
+                        "abuse@godaddy.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.idn_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "None"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Registration"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.nameserver",
+                    "data_type": "string",
+                    "contains": [
+                        "nameserver"
+                    ],
+                    "example_values": [
+                        "ns10.domaincontrol.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.organization",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Domains By Proxy, LLC"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.phone",
+                    "data_type": "string",
+                    "contains": [
+                        "phone"
+                    ],
+                    "example_values": [
+                        "+14806242599"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.state",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Arizona"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.registrar",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "whois_pii_city godaddy.com, llc"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_nameserver_domain",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "ns10.domaincontrol.com"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_pii_address",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Domainsbyproxy.com 2155 E Warner Rd"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_pii_city",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Temple"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_pii_email",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "select contact domain holder link at https://www.godaddy.com/whois/results.aspx?domain=hyas.com "
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_pii_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Registration Private"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_pii_organization",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Domains By Proxy, LLC"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_pii_state",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Arizona"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_pii_geo_country_alpha_2",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "United States"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.whois_pii_phone_e164",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "+14806242599"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.privacy_punch",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "False"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
+                    "column_name": "domain",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "Domain Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "lookup device geo ipv6",
+            "identifier": "lookup_device_geo_ipv6",
+            "description": "Performs IPV6 DeviceGeo Lookup",
+            "verbose": "",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "ipv6": {
+                    "description": "IPV6 to Lookup",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "ipv6"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0,
+                    "name": "ipv6",
+                    "id": 1,
+                    "param_name": "ipv6"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.param.ipv6",
+                    "data_type": "string",
+                    "contains": [
+                        "ip",
+                        "ipv6"
+                    ],
+                    "example_values": [
+                        "fe80::be54:51ff:feeb:bf98"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.datetime",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "2020-07-09T09:53:35Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.device_geo_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.device_user_agent",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "Mozilla/5.0 (Linux; Android 8.1.0; SM-P585Y Build/M1AJQ; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/83.0.4103.106 Safari/537.36"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_country_alpha_2",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "AU"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.geo_horizontal_accuracy",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "27"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ipv4",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "example_values": [
+                        "1.157.132.70"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.ipv6",
+                    "data_type": "string",
+                    "contains": [
+                        "ip",
+                        "ipv6"
+                    ],
+                    "example_values": [
+                        "fe80::be54:51ff:feeb:bf98"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.latitude",
+                    "data_type": "numeric",
+                    "contains": [],
+                    "example_values": [
+                        "-33.732083"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.longitude",
+                    "data_type": "numeric",
+                    "contains": [],
+                    "example_values": [
+                        "151.156693"
+                    ]
+                },
+                {
+                    "data_path": "action_result.*.wifi_bssid",
+                    "data_type": "string",
+                    "contains": [],
+                    "example_values": [
+                        "bc:30:d9:cd:3b:fe"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.ipv6",
+                    "data_type": "string",
+                    "contains": [
+                        "ipv6"
+                    ],
+                    "example_values": [
+                        "bc:30:d9:cd:3b:fe"
+                    ],
+                    "column_name": "ipv6",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success Failed"
+                    ],
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        "1"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 12,
+                "height": 5,
+                "view": "hyasinsight_view.display_view",
+                "title": "IP Reputation"
+            },
+            "versions": "EQ(*)"
+        }
+    ],
+    "custom_made": true,
+    "directory": "hyasinsight_c2b555bf-4a44-4906-b3c5-bc36acd70f40",
+    "version": 1,
+    "appname": "-",
+    "executable": "spawn3",
+    "disabled": false,
+    "copied_from_id": 189,
+    "copied_from_version": "25.9.0",
+    "pip3_dependencies": {
+        "pypi": []
+    }
+}
